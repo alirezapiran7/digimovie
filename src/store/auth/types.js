@@ -1,3 +1,5 @@
 export default actions = {
-
+    STARTUP: 'STARTUP',
+    AUTHENTICATING: "AUTHENTICATING",
+    AUTHENTICATE: "AUTHENTICATE",
 }
