@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { globalStyle } from '@/styles'
-import Text from '@/components/Text'
+
 import { LoginInput } from '@/components/input'
 import { Formik } from 'formik'
 import * as yup from 'yup'
@@ -19,15 +18,18 @@ const index = ({ navigation }) => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
 
+    const submit = useCallback(
+        async (values) => {
+            try {
+                setIsLoading(true)
+                await dispatch(authAction.login(values))
+            } finally {
+                setIsLoading(false)
+            }
+        },
+        [dispatch],
+    )
 
-    const submit = async (values) => {
-        try {
-            setIsLoading(true)
-            await dispatch(authAction.login(values))
-        } finally {
-            setIsLoading(false)
-        }
-    }
 
     return (
 

@@ -1,20 +1,33 @@
 import globalStyle from '@/styles'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
 import Text from '@/components/Text'
 import { IconX, ICON_TYPE } from '@/icons'
 import { color, metrics } from '@/constants'
+import * as authActions from '@/store/auth/actions'
+import { useDispatch } from 'react-redux'
+
 
 
 
 const Header = ({ navigation }) => {
+
+    const dispatch = useDispatch()
+
+    const logout = async () => {
+        dispatch(authActions.logout())
+    }
+
+
+
+
     return (
         <View style={globalStyle.navBar}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={logout}>
                 <IconX name="user" origin={ICON_TYPE.FEATHER_ICONS} color={color.white} size={30} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.searchContainer}>
+            <TouchableOpacity style={styles.searchContainer} onPress={() => navigation.navigate('search')}>
                 <IconX name="search" origin={ICON_TYPE.FEATHER_ICONS} color={color.white} size={25} />
                 <Text style={[globalStyle.textGray, { marginHorizontal: metrics.m2 }]}>Search in here</Text>
             </TouchableOpacity>

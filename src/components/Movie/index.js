@@ -4,15 +4,17 @@ import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-nat
 import Text from '@/components/Text'
 import { color, metrics } from '@/constants'
 import { Rating, AirbnbRating } from 'react-native-ratings';
-
+import Logo from '@/asstes/icons/logo.png'
 
 
 const index = ({ item, navigation }) => {
 
     const praperPoster = useCallback(
-        (poster) => poster.replace(' =>//', '://'),
-        [],
-    )
+        (poster) => {
+            console.log(poster);
+            return poster.replace(' =>//', '://')
+        }
+        , [])
 
     return (
         <TouchableOpacity style={styles.container}>

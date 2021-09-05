@@ -7,13 +7,13 @@ import { Categories, Movies } from './component'
 
 
 
-const index = () => {
+const index = ({ navigation }) => {
 
     return (
         <SafeAreaView style={globalStyle.continer}>
-            <HomeHeader />
-            <Categories />
-            <Movies />
+            <HomeHeader navigation={navigation} />
+            <Categories navigation={navigation} />
+            <Movies navigation={navigation} />
         </SafeAreaView>
     )
 }

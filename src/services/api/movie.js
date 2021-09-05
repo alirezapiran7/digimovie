@@ -25,4 +25,7 @@ export default {
     getGenres(param) {
         return apiClient.get('/genres/', { params: param })
     },
+    getMovies(param) {
+        return apiClient.get('/movies/', { params: param })
+    },
 }
