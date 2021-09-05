@@ -1,9 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Category from '@/components/Category'
 import Movie from '@/components/Movie'
 import * as movieActions from '@/store/movie/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { IconX, ICON_TYPE } from '@/icons'
+import { color, metrics } from '@/constants'
+import globalStyle from '@/styles'
+
+
+export const Header = React.memo(({ navigation }) => {
+
+
+    const dispatch = useDispatch()
+
+    const logout = async () => {
+        dispatch(authActions.logout())
+    }
+
+    return (
+        <View style={globalStyle.navBar}>
+            <TouchableOpacity onPress={logout}>
+                <IconX name="user" origin={ICON_TYPE.FEATHER_ICONS} color={color.white} size={30} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.searchContainer} onPress={() => navigation.navigate('search')}>
+                <IconX name="search" origin={ICON_TYPE.FEATHER_ICONS} color={color.white} size={25} />
+                <Text style={[globalStyle.textGray, { marginHorizontal: metrics.m2 }]}>Search in here</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity >
+                <Text style={[globalStyle.accentText, { fontSize: 18 }]}>En</Text>
+            </TouchableOpacity>
+        </View>
+    )
+})
 
 
 
@@ -13,6 +44,7 @@ export const Categories = ({ navigation }) => {
     const geners = useSelector(state => state.movie.geners)
     const { current_page, total_pages } = useSelector(state => state.movie.generPage)
     const [isLoading, setIsLoading] = useState(false)
+
 
     const getGeners = async () => {
         try {
@@ -25,6 +57,17 @@ export const Categories = ({ navigation }) => {
         }
 
     }
+    const selectGener = async (item) => {
+        try {
+            await dispatch(movieActions.searchMovie({ genre: item.name }))
+            navigation.navigate('search')
+        } finally {
+
+        }
+
+    }
+
+
 
     useEffect(() => {
         getGeners()
@@ -42,7 +85,7 @@ export const Categories = ({ navigation }) => {
                 onEndReached={(props) => {
                     getGeners()
                 }}
-                renderItem={({ item }) => (<Category item={item} onPress={() => navigation.navigate('search', { categoryId: item.id })} />)}
+                renderItem={({ item }) => (<Category item={item} onPress={() => selectGener(item)} />)}
             />
             {isLoading && <ActivityIndicator size={'small'} />}
         </View>
@@ -86,5 +129,15 @@ export const Movies = ({ navigation }) => {
     )
 }
 
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    searchContainer: {
+        flex: 1,
+        marginHorizontal: metrics.m2,
+        backgroundColor: color.postBackground,
+        height: 40,
+        borderRadius: 20,
+        alignItems: 'center',
+        flexDirection: 'row',
+        paddingHorizontal: metrics.p2
+    }
+})

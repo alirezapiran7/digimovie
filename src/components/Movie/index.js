@@ -3,15 +3,14 @@ import React, { useCallback } from 'react'
 import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import Text from '@/components/Text'
 import { color, metrics } from '@/constants'
-import { Rating, AirbnbRating } from 'react-native-ratings';
-import Logo from '@/asstes/icons/logo.png'
+import { AirbnbRating } from 'react-native-ratings';
+
 
 
 const index = ({ item, navigation }) => {
 
     const praperPoster = useCallback(
         (poster) => {
-            console.log(poster);
             return poster.replace(' =>//', '://')
         }
         , [])
@@ -19,7 +18,7 @@ const index = ({ item, navigation }) => {
     return (
         <TouchableOpacity style={styles.container}>
             <View style={styles.posterContainer}>
-                <Image style={styles.postr} source={{ uri: praperPoster(item.poster) }} />
+                <Image style={styles.postr} source={{ uri: praperPoster(item?.poster) }} />
             </View>
 
             <View style={styles.detail}>

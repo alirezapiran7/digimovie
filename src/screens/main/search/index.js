@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 
 import globalStyle from '@/styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import SearchHeader from '@/components/Header/SearchHeader'
-import { Categories, Movies } from './component'
+import { Categories, Movies, SearchHeader } from './component'
 
 
 

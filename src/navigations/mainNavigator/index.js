@@ -7,9 +7,8 @@ import { headerDefault } from '@/components/Header'
 
 
 const index = props => {
-
     const Stack = createNativeStackNavigator();
-
+    console.log(props);
     return (
         <Stack.Navigator screenOptions={headerDefault}  >
             <Stack.Screen name="home" component={Home} options={{ headerShown: false, animation: 'slide_from_bottom' }} />

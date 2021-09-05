@@ -16,7 +16,9 @@ const initialState = {
     total_pages: 1,
   },
 
-  search: [],
+  searchText: '',
+  selectedGener: '',
+  searchMovies: [],
   searchPage: {
     current_page: 0,
     total_pages: 1,
@@ -43,11 +45,12 @@ export default (state = initialState, action) => {
         };
 
     case types.SEARCH_MOVIES:
-      if (state.searchPage.current_page < payload.current_page)
-        return {
-          ...state,
-          geners: [...state.geners, ...payload.items], searchPage: { current_page: payload.current_page, total_pages: payload.total_pages }
-        };
+      return {
+        ...state,
+        searchText: payload.searchText,
+        selectedGener: payload.selectedGener,
+        searchMovies: [...payload.items], searchPage: { current_page: payload.current_page, total_pages: payload.total_pages }
+      };
 
     default:
       return state;
