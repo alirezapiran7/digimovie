@@ -22,6 +22,7 @@ const index = () => {
 
 
     useEffect(() => {
+        console.log('Sorry I was working on another project and did not have enough time to complete this task.');
         if (showToast)
             Toast.show({
                 text1: message, type: 'error', position: 'bottom', onHide: () => {
