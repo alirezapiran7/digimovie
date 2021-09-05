@@ -8,6 +8,7 @@ import AppNavigator from '@/navigations/appNavigator'
 
 import { useDispatch, useSelector, } from 'react-redux'
 import * as modalActions from '@/store/modal/actions';
+import { color } from '@/constants';
 
 const index = () => {
 
@@ -33,7 +34,7 @@ const index = () => {
 
     return (
         <>
-            <StatusBar translucent={true} barStyle={'light-content'} />
+            <StatusBar translucent={true} barStyle={'light-content'} backgroundColor={color.primary} />
 
             {/* <Modal isVisible={showModal} {...config} style={{ margin: 0 }}>
                 {component}

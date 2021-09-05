@@ -22,9 +22,10 @@ const AppNavigator = ({ navigation }) => {
 
     return (
         <NavigationContainer  >
-            {startup && <StartupScreen />}
+            {/* {startup && <StartupScreen />}
             {authenticating && <AuthNavigator />}
-            {authenticate && <MainNavigator />}
+            {authenticate && <MainNavigator />} */}
+            <MainNavigator />
         </NavigationContainer>
     );
 };

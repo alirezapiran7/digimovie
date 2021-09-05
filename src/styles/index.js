@@ -90,6 +90,15 @@ export const globalStyle = StyleSheet.create({
         color: color.green,
         fontSize: metrics.f1,
     },
+    accentText: {
+        color: color.accent,
+        fontSize: metrics.f1,
+    },
+    accentTextBold: {
+        color: color.accent,
+        fontSize: metrics.f1,
+        fontWeight: 'bold'
+    },
     errorText: {
         color: color.tomato,
         fontSize: metrics.f1,
@@ -114,7 +123,24 @@ export const globalStyle = StyleSheet.create({
         shadowOpacity: 0.18,
         shadowRadius: 1.00,
         elevation: 1,
+    },
+
+    navBar: {
+        width: '100%',
+        height: metrics.navBarHeight,
+        backgroundColor: color.primary,
+        alignItems: 'center',
+        paddingHorizontal: metrics.p3,
+        flexDirection: 'row'
+    },
+    card: {
+        backgroundColor: color.postBackground,
+        borderRadius: metrics.r4,
+        alignItems: 'center',
+        flexDirection: 'row',
+        paddingHorizontal: metrics.p2
     }
+
 
 })
 export default globalStyle;

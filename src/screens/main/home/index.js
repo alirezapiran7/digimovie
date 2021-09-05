@@ -1,22 +1,21 @@
-import { LoadingButton } from '@/components/Button'
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { useDispatch } from 'react-redux'
-import * as authActions from '@/store/auth/actions'
+import React, { useState } from 'react'
+
 import globalStyle from '@/styles'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import HomeHeader from '@/components/Header/HomeHeader'
+import { Categories, Movies } from './component'
+
+
 
 const index = () => {
-    const dispatch = useDispatch()
 
     return (
-        <View style={globalStyle.centerContiner}>
-            <LoadingButton title="logout" onPress={() => {
-                dispatch(authActions.logout())
-            }} />
-        </View>
+        <SafeAreaView style={globalStyle.continer}>
+            <HomeHeader />
+            <Categories />
+            <Movies />
+        </SafeAreaView>
     )
 }
 
 export default index
-
-const styles = StyleSheet.create({})

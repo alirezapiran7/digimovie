@@ -11,6 +11,7 @@ import Layout from './Layout'
 import { useDispatch } from 'react-redux'
 import * as authAction from '@/store/auth/actions'
 import Space from '@/components/Space'
+import { IconX } from '@/icons'
 
 
 
@@ -62,6 +63,7 @@ const index = ({ navigation }) => {
                                 keyboardType="email-address"
                             />
                             <Space />
+
                             <LoginInput
                                 name="password"
                                 lable="Password"
